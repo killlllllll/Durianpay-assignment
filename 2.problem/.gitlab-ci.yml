@@ -1,1 +1,11 @@
+stages:
+  - build
+
+docker_build:
+  stage: build
+  script:
+    - docker build -t new-iamge .
+    - docker run -itd --name nginx-container -p 8004:80 new-image 
+  only:
+    - main
 
